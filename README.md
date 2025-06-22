@@ -1,5 +1,4 @@
 # Final-project
-
 # Game Guide
 
 ---
@@ -28,4 +27,5 @@
 
 ```bash
 git clone https://github.com/koncc1/Final-project.git
-cd final-project
+cd my-app
+npm start
