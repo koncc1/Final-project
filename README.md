@@ -16,6 +16,7 @@
 - React
 - react-router-dom
 - CSS
+- useState, useEffect
 - RAWG API (для отримання даних про ігри)  
 
 ---
