@@ -36,3 +36,30 @@
     transform: rotate(360deg);
   }
 }
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+
+:root {
+  --bg-color: #0c0c0c ;
+  --card-bg: #1a1919 ;
+  --text-color: #e3e36e  ;
+  --accent-color: #dede69            ;              
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+        font-family: "Roboto Mono", monospace;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--accent-color);
+}
+
+h1, h2, h3 {
+  color: var(--accent-color);
+}
+

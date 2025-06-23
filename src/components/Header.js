@@ -7,7 +7,7 @@ function Header({ toggleSidebar }) {
       <button onClick={toggleSidebar} style={styles.burger}>
         &#9776;
       </button>
-      <h1 style={{ margin: 0 }}>Game Guide</h1>
+      <h1 style={{ margin: 0 }}>Game Store</h1>
     </header>
   );
 }

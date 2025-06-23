@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Sidebar({ isOpen, toggleSidebar }) {
   return (
-    <nav style={{ ...styles.sidebar, left: isOpen ? 0 : '-250px' }}>
+    <nav style={{ ...styles.sidebar, left: isOpen ? 0 : '-300px' }}>
       <button onClick={toggleSidebar} style={styles.closeBtn}>&times;</button>
       <ul style={styles.list}>
         <li><Link to="/" onClick={toggleSidebar} style={styles.link}>Головна</Link></li>
@@ -17,14 +17,14 @@ function Sidebar({ isOpen, toggleSidebar }) {
 const styles = {
   sidebar: {
     position: 'fixed',
-    top: 0,
+    top: 60,
     left: 0,
-    width: '250px',
+    width: '300px',
     height: '100%',
     backgroundColor: '#333',
     color: '#fff',
     paddingTop: '60px',
-    transition: 'left 1s ease',
+    transition: 'left .5s ease',
     zIndex: 1000,
   },
   closeBtn: {

@@ -1,5 +1,7 @@
+import './App.css';
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 
 import Header from './components/Header';
 import Sidebar from './components/SideMenu';
@@ -10,10 +12,10 @@ import Contact from './pages/Contact';
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
 
   return (
+
     <Router>
       <Header toggleSidebar={toggleSidebar} />
       <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
