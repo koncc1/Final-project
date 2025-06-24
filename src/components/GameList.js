@@ -10,16 +10,21 @@ function shuffleArray(array) {
 
 function GameList() {
   const [games, setGames] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     fetch(`https://api.rawg.io/api/games?key=${API_KEY}&page_size=40`)
       .then(res => res.json())
       .then(data => {
         const shuffled = shuffleArray(data.results);
         const selected = shuffled.slice(0, 12);
         setGames(selected);
+        setLoading(false);
       })
   }, []);
+
+  if (loading) return <p>Loading...</p>;
 
   return (
     <div className="game-list">
