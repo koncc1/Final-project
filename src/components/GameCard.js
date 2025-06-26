@@ -1,16 +1,23 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
+function GameCard({ game }) {
+  const navigate = useNavigate();
 
-function GameCard({ game, onSelect }) {
   return (
-    <div style={styles.card}>
-      <img src={game.image} alt={game.title} style={styles.image} />
-      <h3 style={styles.title}>{game.title}</h3>
-      <p style={styles.description}>{game.description}</p>
-      <button style={styles.button} onClick={() => onSelect(game)}>Детальніше</button>
+    <div
+      className="game-card"
+      onClick={() => navigate(`/games/${game.id}`)}
+      style={{ cursor: 'pointer' }}
+    >
+      <img src={game.image} alt={game.title} className="game-image" />
+      <h3>{game.title}</h3>
+      <p>Рейтинг: {game.rating}</p>
+      <p>Жанри: {game.genre}</p>
     </div>
   );
 }
+
 
 
 const styles = {
