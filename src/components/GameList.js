@@ -32,8 +32,8 @@ function GameList() {
         <div key={game.id} className="game-card">
           <img src={game.background_image} alt={game.name} className="game-image" />
           <h3>{game.name}</h3>
-          <p>Рейтинг: {game.rating}</p>
-          <p>Жанри: {game.genres.map(g => g.name).join(', ')}</p>
+          <p>Rating: {game.rating}</p>
+          <p>Genres: {game.genres.map(g => g.name).join(', ')}</p>
         </div>
       ))}
     </div>
