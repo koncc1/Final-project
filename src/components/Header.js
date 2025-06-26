@@ -1,38 +1,22 @@
 import React from 'react';
-
+import '../style/header.css';
+import SearchBar from '../components/SearchBar';
 
 function Header({ toggleSidebar }) {
   return (
-    <header style={styles.header}>
-      <button onClick={toggleSidebar} style={styles.burger}>
-        &#9776;
-      </button>
-      <h1 style={{ margin: 0 }}>Game Store</h1>
+    <header className="header">
+      <div className="container">
+        <div className="left-block">
+          <button onClick={toggleSidebar} className="burger">&#9776;</button>
+          <h1 className="logo">Game Store</h1>
+        </div>
+
+        <div className="right-block">
+          <SearchBar />
+        </div>
+      </div>
     </header>
   );
 }
-
-const styles = {
-  header: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    zIndex: 1000,
-    display: 'flex',
-    alignItems: 'center',
-    backgroundColor: '#222',
-    color: '#fff',
-    padding: '10px 20px',
-  },
-  burger: {
-    fontSize: '24px',
-    background: 'none',
-    border: 'none',
-    color: '#fff',
-    cursor: 'pointer',
-    marginRight: '20px',
-  },
-};
 
 export default Header;
