@@ -13,7 +13,7 @@ function GameLibrary() {
   
     return (
       <div style={styles.container}>
-        <h1 style={styles.title}>Крамниця ігор</h1>
+        <h1 style={styles.title}>Game Store</h1>
         <div style={styles.list}>
           {games.map((game) => (
             <GameCard key={game.id} game={game} onSelect={handleSelect} />

@@ -9,59 +9,59 @@ function GameStorePage({ games }) {
     const navigate = useNavigate();
     const [wishlisted, setWishlisted] = useState(false);
   
-    if (!game) return <div style={styles.page}>Гру не знайдено.</div>;
-  
-    return (
-      <div style={styles.page}>
-        <button style={styles.backButton} onClick={() => navigate('/games')}>← Назад</button>
-        <h1 style={styles.title}>{game.title}</h1>
-  
-        {game.discount > 0 && (
-          <div style={styles.discountBanner}>ЗНИЖКА -{game.discount}%!</div>
-        )}
-  
-        <img src={game.image} alt={game.title} style={styles.mainImage} />
-  
-        <video style={styles.trailer} controls>
-          <source src={game.trailer} type="video/mp4" />
-          Ваш браузер не підтримує відео.
-        </video>
-  
-        <h2 style={styles.heading}>Про гру</h2>
-        <p style={styles.text}>{game.description}</p>
-  
-        <h3 style={styles.heading}>Жанр</h3>
-        <p style={styles.text}>{game.genre}</p>
-  
-        <h3 style={styles.heading}>Платформи</h3>
-        <p style={styles.text}>{game.platforms.join(', ')}</p>
-  
-        <h3 style={styles.heading}>Рейтинг</h3>
-        <p style={styles.text}>{'★'.repeat(game.rating)}{'☆'.repeat(5 - game.rating)}</p>
-  
-        <h3 style={styles.heading}>Відгуки</h3>
-        {game.reviews.map((r, i) => (
-          <blockquote key={i} style={styles.blockquote}>{r}</blockquote>
-        ))}
-  
-        <h3 style={styles.heading}>Системні вимоги</h3>
-        <pre style={styles.pre}>
-          ОС: {game.requirements.os}{"\n"}
-          CPU: {game.requirements.cpu}{"\n"}
-          GPU: {game.requirements.gpu}{"\n"}
-          RAM: {game.requirements.ram}{"\n"}
-          Диск: {game.requirements.disk}
-        </pre>
-  
-        <button style={styles.buyButton}>
-          Придбати за {game.price}₴
-        </button>
-  
-        <button style={styles.wishlistButton} onClick={() => setWishlisted(!wishlisted)}>
-          {wishlisted ? '✅ У списку бажаного' : '💖 Додати до списку бажаного'}
-        </button>
-      </div>
-    );
+    if (!game) return <div style={styles.page}>Game not found.</div>;
+
+return (
+  <div style={styles.page}>
+    <button style={styles.backButton} onClick={() => navigate('/games')}>← Back</button>
+    <h1 style={styles.title}>{game.title}</h1>
+
+    {game.discount > 0 && (
+      <div style={styles.discountBanner}>DISCOUNT -{game.discount}%!</div>
+    )}
+
+    <img src={game.image} alt={game.title} style={styles.mainImage} />
+
+    <video style={styles.trailer} controls>
+      <source src={game.trailer} type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    <h2 style={styles.heading}>About the Game</h2>
+    <p style={styles.text}>{game.description}</p>
+
+    <h3 style={styles.heading}>Genre</h3>
+    <p style={styles.text}>{game.genre}</p>
+
+    <h3 style={styles.heading}>Platforms</h3>
+    <p style={styles.text}>{game.platforms.join(', ')}</p>
+
+    <h3 style={styles.heading}>Rating</h3>
+    <p style={styles.text}>{'★'.repeat(game.rating)}{'☆'.repeat(5 - game.rating)}</p>
+
+    <h3 style={styles.heading}>Reviews</h3>
+    {game.reviews.map((r, i) => (
+      <blockquote key={i} style={styles.blockquote}>{r}</blockquote>
+    ))}
+
+    <h3 style={styles.heading}>System Requirements</h3>
+    <pre style={styles.pre}>
+      OS: {game.requirements.os}{"\n"}
+      CPU: {game.requirements.cpu}{"\n"}
+      GPU: {game.requirements.gpu}{"\n"}
+      RAM: {game.requirements.ram}{"\n"}
+      Disk: {game.requirements.disk}
+    </pre>
+
+    <button style={styles.buyButton}>
+      Buy for {game.price}₴
+    </button>
+
+    <button style={styles.wishlistButton} onClick={() => setWishlisted(!wishlisted)}>
+      {wishlisted ? '✅ In Wishlist' : '💖 Add to Wishlist'}
+    </button>
+  </div>
+);
   }
 
 

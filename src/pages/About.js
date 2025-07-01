@@ -6,35 +6,36 @@ function About() {
       <section style={styles.container}>
         <h2 style={styles.title}>Про нас</h2>
         <p style={styles.text}>
-          Ласкаво просимо до нашої ігрової платформи — місця, де кожен геймер знайде щось для себе!
-          Ми створили цей простір, щоб об'єднати мільйони гравців з усього світу та подарувати найкращі враження від ігор.
+          - Welcome to our gaming platform — a place where every gamer finds something to love!
+          We created this space to unite millions of players worldwide and deliver the best gaming experiences.
         </p>
 
-        <h3 style={styles.subtitle}>Що ми пропонуємо</h3>
+        <h3 style={styles.subtitle}>What We Offer</h3>
         <ul style={styles.list}>
-          <li>Величезну бібліотеку ігор на будь-який смак — від інді до AAA-хітів.</li>
-          <li>Зручний магазин з вигідними пропозиціями та регулярними знижками.</li>
-          <li>Потужне ком’юніті для спілкування, кооперативної гри та змагань.</li>
-          <li>Інноваційні технології: хмарні ігри, стрімінг, ігрові досягнення та багато іншого.</li>
+          <li>A vast library of games for every taste — from indies to AAA hits.</li>
+          <li>A convenient store with great deals and regular discounts.</li>
+          <li>A strong community for communication, co-op gaming, and competition.</li>
+          <li>Innovative tech: cloud gaming, streaming, achievements, and much more.</li>
         </ul>
 
-        <h3 style={styles.subtitle}>Наша місія</h3>
+        <h3 style={styles.subtitle}>Our Mission </h3>
         <p style={styles.text}>
-          Ми прагнемо зробити ігри доступними, захопливими і надихаючими для всіх.
-          Об’єднуючи геймерів та розробників, ми створюємо майбутнє ігрової індустрії.
+          - We aim to make gaming accessible, exciting, and inspiring for everyone.
+By connecting gamers and developers, we help shape the future of the gaming industry.
         </p>
 
-        <h3 style={styles.subtitle}>Контакти</h3>
+        <h3 style={styles.subtitle}>Contact</h3>
         <div style={styles.contactInfo}>
           <div>
-            <strong>Телефон:</strong> <a href="tel:+380123456789" style={styles.link}>+38 (012) 345-67-89</a>
+            <strong>Phone:</strong> <a href="tel:+380123456789" style={styles.link}>+38 (012) 345-67-89</a>
           </div>
           <div>
             <strong>Email:</strong> <a href="mailto:support@gamingplatform.com" style={styles.link}>support@gamingplatform.com</a>
           </div>
         </div>
 
-        <h3 style={styles.subtitle}>Ми в соціальних мережах</h3>
+        <h3 style={styles.subtitle}>- Follow Us on Social Media
+</h3>
         <div style={styles.socials}>
           <a href="https://facebook.com/gamingplatform" target="_blank" rel="noreferrer" style={styles.socialLink} aria-label="Facebook">
             <svg style={styles.icon} viewBox="0 0 24 24" fill="#3b5998" xmlns="http://www.w3.org/2000/svg">
@@ -60,7 +61,7 @@ function About() {
       </section>
 
       <footer style={styles.footer}>
-        Дякуємо, що ви з нами! Геймери — це наше серце і душа.
+        Thank you for being with us! Gamers are our heart and soul.
       </footer>
     </div>
   );

@@ -17,9 +17,8 @@ function GameList() {
         >
           <img src={game.image} alt={game.title} className="game-image" />
           <h3>{game.title}</h3>
-          <p>Рейтинг: {game.rating}</p>
-          <p>Жанри: {game.genre}</p>
-
+          <p>Rating: {game.rating}</p>
+          <p>Genres: {game.genre}</p>
         </div>
       ))}
     </div>
