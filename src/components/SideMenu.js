@@ -22,7 +22,6 @@ function Sidebar({ isOpen, toggleSidebar }) {
             <h3>Important</h3>
             <Link to="/" onClick={toggleSidebar} style={styles.link}>Store</Link>
             <Link to="/cart" onClick={toggleSidebar} style={styles.link}>Cart</Link>
-            <Link to="/filter" onClick={toggleSidebar} style={styles.link}>Filter</Link>
           </li>
           <li>
             <h3>Genres</h3>
@@ -38,14 +37,15 @@ function Sidebar({ isOpen, toggleSidebar }) {
           </li>
           <li>
             <h3>Platform</h3>
-            <Link to="/windows" onClick={toggleSidebar} style={styles.link}>Windows</Link>
-            <Link to="/linux-mac" onClick={toggleSidebar} style={styles.link}>Linux, Mac</Link>
-            <Link to="/ps-xbox" onClick={toggleSidebar} style={styles.link}>PS, Xbox</Link>
+            <Link to="/platform/4" onClick={toggleSidebar} style={styles.link}>PC</Link>
+            <Link to="/platform/18" onClick={toggleSidebar} style={styles.link}>PlayStation</Link>
+            <Link to="/platform/1" onClick={toggleSidebar} style={styles.link}>Xbox</Link>
+            <Link to="/platform/5" onClick={toggleSidebar} style={styles.link}>Mac</Link>
+            <Link to="/platform/6" onClick={toggleSidebar} style={styles.link}>Linux</Link>
           </li>
           <li>
             <h3>Else</h3>
             <Link to="/about" onClick={toggleSidebar} style={styles.link}>About us</Link>
-            <Link to="/contact" onClick={toggleSidebar} style={styles.link}>Contacts</Link>
           </li>
         </ul>
       </div>

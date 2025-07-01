@@ -51,7 +51,7 @@
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
-        font-family: "Roboto Mono", monospace;
+  font-family: "Roboto Mono", monospace;
 }
 
 .card {
