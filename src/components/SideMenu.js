@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 
 function Sidebar({ isOpen, toggleSidebar }) {
   const [genres, setGenres] = useState([]);
-  const [isMenuOpen, setMenuOpen] = useState({
+  const [isDropdownOpen, setDropdownOpen] = useState({
     genres: false,
     platforms: false,
   });
 
   const toggleMenu = (menu) => {
-    setMenuOpen((prev) => ({
+    setDropdownOpen((prev) => ({
       ...prev,
       [menu]: !prev[menu],
     }));
@@ -35,32 +35,56 @@ function Sidebar({ isOpen, toggleSidebar }) {
             <Link to="/cart" onClick={toggleSidebar} style={styles.link}>Cart</Link>
           </li>
           <li>
-            <h3 onClick={() => toggleMenu('genres')} style={styles.dropDownTitle}>
-              Genres {isMenuOpen.genres ? '▾' : '▸'}
-              </h3>
-            {isMenuOpen.genres && genres.map(genre => (
-              <Link 
-                key={genre.id}
-                to={`/genre/${genre.slug}`}
-                onClick={toggleSidebar}
-                style={styles.link}>
+            <h3 onClick={() => toggleMenu('genres')} style={styles.dropdownTitle}>
+              Genres 
+              <span
+                style={{
+                  ...styles.arrow,
+                  transform: isDropdownOpen.genres ? 'rotate(90deg)' : 'rotate(0deg)',
+                }}
+              />
+            </h3>
+            <div
+              style={{
+                ...styles.dropdownContent,
+                maxHeight: isDropdownOpen.genres ? '820px' : '0px',
+                pointerEvents: isDropdownOpen.genres ? 'auto' : 'none',
+              }}
+            >
+              {genres.map(genre => (
+                <Link
+                  key={genre.id}
+                  to={`/genre/${genre.slug}`}
+                  onClick={toggleSidebar}
+                  style={styles.link}>
                   {genre.name}
-              </Link>
-            ))}
+                </Link>
+              ))}
+            </div>
           </li>
           <li>
-            <h3 onClick={() => toggleMenu('platforms')} style={styles.dropDownTitle}>
-              Platform {isMenuOpen.platforms ? '▾' : '▸'}
-              </h3>
-            {isMenuOpen.platforms && (
-              <>
-                <Link to="/platform/4" onClick={toggleSidebar} style={styles.link}>PC</Link>
-                <Link to="/platform/18" onClick={toggleSidebar} style={styles.link}>PlayStation</Link>
-                <Link to="/platform/1" onClick={toggleSidebar} style={styles.link}>Xbox</Link>
-                <Link to="/platform/5" onClick={toggleSidebar} style={styles.link}>Mac</Link>
-                <Link to="/platform/6" onClick={toggleSidebar} style={styles.link}>Linux</Link>
-              </>
-            )}
+            <h3 onClick={() => toggleMenu('platforms')} style={styles.dropdownTitle}>
+              Platform 
+              <span
+                style={{
+                  ...styles.arrow,
+                  transform: isDropdownOpen.platforms ? 'rotate(90deg)' : 'rotate(0deg)',
+                }}
+              />
+            </h3>
+            <div
+              style={{
+                ...styles.dropdownContent,
+                maxHeight: isDropdownOpen.platforms ? '220px' : '0px',
+                pointerEvents: isDropdownOpen.platforms ? 'auto' : 'none',
+              }}
+            >
+              <Link to="/platform/4" onClick={toggleSidebar} style={styles.link}>PC</Link>
+              <Link to="/platform/18" onClick={toggleSidebar} style={styles.link}>PlayStation</Link>
+              <Link to="/platform/1" onClick={toggleSidebar} style={styles.link}>Xbox</Link>
+              <Link to="/platform/5" onClick={toggleSidebar} style={styles.link}>Mac</Link>
+              <Link to="/platform/6" onClick={toggleSidebar} style={styles.link}>Linux</Link>
+            </div>
           </li>
           <li>
             <h3>Else</h3>
@@ -115,12 +139,25 @@ const styles = {
     fontSize: '18px',
     marginLeft: '10px',
   },
-  dropDownTitle: {
+  dropdownTitle: {
     cursor: 'pointer',
     display: 'flex',
     alignItems: 'center',
-    gap: '8px',
-  }
+    gap: '15px',
+  },
+  dropdownContent: {
+    overflow: 'hidden',
+    transition: 'max-height 0.6s',
+  },
+  arrow: {
+    display: 'inline-block',
+    width: '0',
+    height: '0',
+    borderTop: '6px solid transparent',
+    borderBottom: '6px solid transparent',
+    borderLeft: '8px solid',
+    transition: 'transform 0.3s ease',
+  },
 };
 
 export default Sidebar;

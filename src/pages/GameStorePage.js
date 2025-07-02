@@ -1,72 +1,92 @@
-import React, { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 
 
-function GameStorePage({ games }) {
-    const { id } = useParams();
-    const game = games.find((g) => g.id === parseInt(id));
-    const navigate = useNavigate();
-    const [wishlisted, setWishlisted] = useState(false);
-  
-    if (!game) return (
-      <div style={styles.page}>
-        <button style={styles.backButton} onClick={() => navigate('/games')}>← Back</button>
-        <div>Game not found.</div> 
-      </div>
-    );
+function GameStorePage({ games, wishlist, setWishlist }) {
+  const { id } = useParams();
+  const game = games.find((g) => g.id === parseInt(id));
 
-return (
-  <div style={styles.page}>
-    <button style={styles.backButton} onClick={() => navigate('/games')}>← Back</button>
-    <h1 style={styles.title}>{game.title}</h1>
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from || '/';
 
-    {game.discount > 0 && (
-      <div style={styles.discountBanner}>DISCOUNT -{game.discount}%!</div>
-    )}
+  const [wishlisted, setWishlisted] = useState(false);
 
-    <img src={game.image} alt={game.title} style={styles.mainImage} />
+  useEffect(() => {
+    if (game && wishlist.some(g => g.id === game.id)) {
+      setWishlisted(true);
+    }
+  }, [game, wishlist]);
 
-    <video style={styles.trailer} controls>
-      <source src={game.trailer} type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
+  useEffect(() => {
+    if (!game) return;
 
-    <h2 style={styles.heading}>About the Game</h2>
-    <p style={styles.text}>{game.description}</p>
+    if (wishlisted && !wishlist.some(g => g.id === game.id)) {
+      setWishlist(prev => [...prev, game]);
+    } else if (!wishlisted && wishlist.some(g => g.id === game.id)) {
+      setWishlist(prev => prev.filter(g => g.id !== game.id));
+    }
+  }, [wishlisted]);
 
-    <h3 style={styles.heading}>Genre</h3>
-    <p style={styles.text}>{game.genre}</p>
+   if (!game) return (
+    <div>
+      <button onClick={() => navigate(from)}>← Back</button>
+      <div>Game not found.</div> 
+    </div>
+  );
 
-    <h3 style={styles.heading}>Platforms</h3>
-    <p style={styles.text}>{game.platforms.join(', ')}</p>
+  return (
+    <div style={styles.page}>
+      <button style={styles.backButton} onClick={() => navigate(from)}>← Back</button>
+      <h1 style={styles.title}>{game.title}</h1>
 
-    <h3 style={styles.heading}>Rating</h3>
-    <p style={styles.text}>{'★'.repeat(game.rating)}{'☆'.repeat(5 - game.rating)}</p>
+      {game.discount > 0 && (
+        <div style={styles.discountBanner}>DISCOUNT -{game.discount}%!</div>
+      )}
 
-    <h3 style={styles.heading}>Reviews</h3>
-    {game.reviews.map((r, i) => (
-      <blockquote key={i} style={styles.blockquote}>{r}</blockquote>
-    ))}
+      <img src={game.image} alt={game.title} style={styles.mainImage} />
 
-    <h3 style={styles.heading}>System Requirements</h3>
-    <pre style={styles.pre}>
-      OS: {game.requirements.os}{"\n"}
-      CPU: {game.requirements.cpu}{"\n"}
-      GPU: {game.requirements.gpu}{"\n"}
-      RAM: {game.requirements.ram}{"\n"}
-      Disk: {game.requirements.disk}
-    </pre>
+      <video style={styles.trailer} controls>
+        <source src={game.trailer} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
-    <button style={styles.buyButton}>
-      Buy for {game.price}₴
-    </button>
+      <h2 style={styles.heading}>About the Game</h2>
+      <p style={styles.text}>{game.description}</p>
 
-    <button style={styles.wishlistButton} onClick={() => setWishlisted(!wishlisted)}>
-      {wishlisted ? '✅ In Wishlist' : '💖 Add to Wishlist'}
-    </button>
-  </div>
-);
-  }
+      <h3 style={styles.heading}>Genre</h3>
+      <p style={styles.text}>{game.genre}</p>
+
+      <h3 style={styles.heading}>Platforms</h3>
+      <p style={styles.text}>{game.platforms.join(', ')}</p>
+
+      <h3 style={styles.heading}>Rating</h3>
+      <p style={styles.text}>{'★'.repeat(game.rating)}{'☆'.repeat(5 - game.rating)}</p>
+
+      <h3 style={styles.heading}>Reviews</h3>
+      {game.reviews.map((r, i) => (
+        <blockquote key={i} style={styles.blockquote}>{r}</blockquote>
+      ))}
+
+      <h3 style={styles.heading}>System Requirements</h3>
+      <pre style={styles.pre}>
+        OS: {game.requirements.os}{"\n"}
+        CPU: {game.requirements.cpu}{"\n"}
+        GPU: {game.requirements.gpu}{"\n"}
+        RAM: {game.requirements.ram}{"\n"}
+        Disk: {game.requirements.disk}
+      </pre>
+
+      <button style={styles.buyButton}>
+        Buy for {game.price}₴
+      </button>
+
+      <button style={styles.wishlistButton} onClick={() => setWishlisted(!wishlisted)}>
+        {wishlisted ? '✅ In Wishlist' : '💖 Add to Wishlist'}
+      </button>
+    </div>
+  );
+}
 
 
 const styles = {
