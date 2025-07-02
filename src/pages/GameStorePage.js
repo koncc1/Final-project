@@ -46,10 +46,12 @@ function GameStorePage({ games, wishlist, setWishlist }) {
 
       <img src={game.image} alt={game.title} style={styles.mainImage} />
 
-      <video style={styles.trailer} controls>
-        <source src={game.trailer} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      <h3 style={styles.heading}>Screenshots from the game</h3>
+      <div style={styles.screenshotsContainer}>
+        {game.screenshots?.map((src, index) => (
+          <img key={index} src={src} alt={`Screenshot ${index + 1}`} style={styles.screenshot} />
+        ))}
+      </div>
 
       <h2 style={styles.heading}>About the Game</h2>
       <p style={styles.text}>{game.description}</p>
@@ -183,6 +185,10 @@ const styles = {
       fontSize: 16,
       marginTop: 16,
       cursor: 'pointer',
+    },
+    screenshot: {
+      height: '540px',
+      borderRadius: 12,
     },
   };
    
