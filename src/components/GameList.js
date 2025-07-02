@@ -13,7 +13,6 @@ function GameList() {
           key={game.id}
           className="game-card"
           onClick={() => navigate(`/games/${game.id}`)}
-          style={{ cursor: 'pointer' }}
         >
           <img src={game.image} alt={game.title} className="game-image" />
           <h3>{game.title}</h3>

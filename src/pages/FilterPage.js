@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import '../style/GameList.css';
 
 const API_KEY = '97cbcafc437e4b9eb505fbeff95d71d3';
@@ -9,6 +9,7 @@ function FilterPage() {
     const [games, setGames] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    const navigate = useNavigate();
 
     const genre = searchParams.get('genre');
     const platform = searchParams.get('platform');
@@ -51,7 +52,7 @@ function FilterPage() {
         <div className="game-list">
             {games.length === 0 && <p style={{ color: 'white' }}>No games found.</p>}
             {games.map(game => (
-            <div key={game.id} className="game-card">
+            <div key={game.id} className="game-card" onClick={() => navigate(`/games/${game.id}`)}>
                 <img src={game.background_image} alt={game.name} className="game-image" />
                 <h3>{game.name}</h3>
                 <p>Рейтинг: {game.rating}</p>

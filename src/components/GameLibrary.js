@@ -1,4 +1,3 @@
-// components/GameLibrary.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { games } from '../data/games';

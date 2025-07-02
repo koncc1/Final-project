@@ -3,6 +3,17 @@ import { Link } from 'react-router-dom';
 
 function Sidebar({ isOpen, toggleSidebar }) {
   const [genres, setGenres] = useState([]);
+  const [isMenuOpen, setMenuOpen] = useState({
+    genres: false,
+    platforms: false,
+  });
+
+  const toggleMenu = (menu) => {
+    setMenuOpen((prev) => ({
+      ...prev,
+      [menu]: !prev[menu],
+    }));
+  };
 
   const API_KEY = '97cbcafc437e4b9eb505fbeff95d71d3';
 
@@ -24,8 +35,10 @@ function Sidebar({ isOpen, toggleSidebar }) {
             <Link to="/cart" onClick={toggleSidebar} style={styles.link}>Cart</Link>
           </li>
           <li>
-            <h3>Genres</h3>
-            {genres.map(genre => (
+            <h3 onClick={() => toggleMenu('genres')} style={styles.dropDownTitle}>
+              Genres {isMenuOpen.genres ? '▾' : '▸'}
+              </h3>
+            {isMenuOpen.genres && genres.map(genre => (
               <Link 
                 key={genre.id}
                 to={`/genre/${genre.slug}`}
@@ -36,12 +49,18 @@ function Sidebar({ isOpen, toggleSidebar }) {
             ))}
           </li>
           <li>
-            <h3>Platform</h3>
-            <Link to="/platform/4" onClick={toggleSidebar} style={styles.link}>PC</Link>
-            <Link to="/platform/18" onClick={toggleSidebar} style={styles.link}>PlayStation</Link>
-            <Link to="/platform/1" onClick={toggleSidebar} style={styles.link}>Xbox</Link>
-            <Link to="/platform/5" onClick={toggleSidebar} style={styles.link}>Mac</Link>
-            <Link to="/platform/6" onClick={toggleSidebar} style={styles.link}>Linux</Link>
+            <h3 onClick={() => toggleMenu('platforms')} style={styles.dropDownTitle}>
+              Platform {isMenuOpen.platforms ? '▾' : '▸'}
+              </h3>
+            {isMenuOpen.platforms && (
+              <>
+                <Link to="/platform/4" onClick={toggleSidebar} style={styles.link}>PC</Link>
+                <Link to="/platform/18" onClick={toggleSidebar} style={styles.link}>PlayStation</Link>
+                <Link to="/platform/1" onClick={toggleSidebar} style={styles.link}>Xbox</Link>
+                <Link to="/platform/5" onClick={toggleSidebar} style={styles.link}>Mac</Link>
+                <Link to="/platform/6" onClick={toggleSidebar} style={styles.link}>Linux</Link>
+              </>
+            )}
           </li>
           <li>
             <h3>Else</h3>
@@ -65,6 +84,7 @@ const styles = {
     color: '#fff',
     transition: 'left .5s ease',
     zIndex: 1000,
+    userSelect: 'none',
   },
   scrollContent: {
     height: '80%',
@@ -95,6 +115,12 @@ const styles = {
     fontSize: '18px',
     marginLeft: '10px',
   },
+  dropDownTitle: {
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+  }
 };
 
 export default Sidebar;

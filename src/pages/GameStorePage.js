@@ -1,4 +1,3 @@
-// pages/GameStorePage.js
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
@@ -9,7 +8,12 @@ function GameStorePage({ games }) {
     const navigate = useNavigate();
     const [wishlisted, setWishlisted] = useState(false);
   
-    if (!game) return <div style={styles.page}>Game not found.</div>;
+    if (!game) return (
+      <div style={styles.page}>
+        <button style={styles.backButton} onClick={() => navigate('/games')}>← Back</button>
+        <div>Game not found.</div> 
+      </div>
+    );
 
 return (
   <div style={styles.page}>
@@ -142,6 +146,7 @@ const styles = {
       backgroundColor: '#00adee',
       color: 'white',
       padding: '14px 28px',
+      marginRight: '10px',
       border: 'none',
       borderRadius: 8,
       fontSize: 18,

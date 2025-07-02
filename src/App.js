@@ -11,7 +11,6 @@ import About from './pages/About';
 import GenrePage from './pages/GenrePage';
 import PlatformPage from './pages/PlatformPage';
 import FilterPage from './pages/FilterPage';
-import Filter from './components/Filter';
 
 import GameLibrary from './components/GameLibrary';
 import GameStorePage from './pages/GameStorePage';
