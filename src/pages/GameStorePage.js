@@ -13,7 +13,6 @@ function GameStorePage({ wishlist, setWishlist }) {
   const [screenshots, setScreenshots] = useState([]);
   const [wishlisted, setWishlisted] = useState(false);
 
-  // Load game info from RAWG
   useEffect(() => {
     fetch(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)
       .then(res => res.json())
@@ -41,9 +40,9 @@ function GameStorePage({ wishlist, setWishlist }) {
   }, [wishlisted]);
 
   if (!game) return (
-    <div>
-      <button onClick={() => navigate(from)}>← Back</button>
-      <div>Loading game...</div>
+    <div style={styles.page}>
+      <button onClick={() => navigate(from)} style={styles.backButton}>← Back</button>
+      <div>Loading...</div>
     </div>
   );
 
@@ -52,8 +51,8 @@ function GameStorePage({ wishlist, setWishlist }) {
       <button style={styles.backButton} onClick={() => navigate(from)}>← Back</button>
       <h1 style={styles.title}>{game.name}</h1>
 
-      {game.metacritic && (
-        <div style={styles.discountBanner}>Metacritic: {game.metacritic}</div>
+      {game.discount && (
+        <div style={styles.discountBanner}>Discount: {game.discount}</div>
       )}
 
       <img src={game.background_image} alt={game.name} style={styles.mainImage} />

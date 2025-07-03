@@ -19,7 +19,7 @@ function GameList() {
       .then(res => res.json())
       .then(data => {
         const shuffled = shuffleArray(data.results);
-        const selected = shuffled.slice(0, 12); // або 10
+        const selected = shuffled.slice(0, 12);
         setGames(selected);
         setLoading(false);
       });

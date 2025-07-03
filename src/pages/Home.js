@@ -7,7 +7,7 @@ function Home() {
   return (
     <div>
       <h1 style={{ textAlign: 'center', marginTop: '20px' }}></h1>
-      <GameList games={games} />
+      <GameList />
     </div>
   );
 }

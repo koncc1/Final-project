@@ -19,7 +19,6 @@ function Cart({ wishlist }) {
 
     setLoading(true);
 
-    // Отримати деталі всіх ігор у wishlist
     Promise.all(
       wishlist.map(game =>
         fetch(`https://api.rawg.io/api/games/${game.id}?key=${API_KEY}`)

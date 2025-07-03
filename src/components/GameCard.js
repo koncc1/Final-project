@@ -6,14 +6,13 @@ function GameCard({ game }) {
 
   return (
     <div
-      className="game-card"
+      style={styles.card}
       onClick={() => navigate(`/games/${game.id}`)}
-      style={{ cursor: 'pointer' }}
     >
-      <img src={game.image} alt={game.title} className="game-image" />
-      <h3>{game.title}</h3>
-      <p>Rating: {game.rating}</p>
-      <p>Genres: {game.genre}</p>
+      <img src={game.image} alt={game.title} style={styles.gameImage} />
+      <h3 style={styles.title}>{game.title}</h3>
+      <p style={styles.decription}>Rating: {game.rating}</p>
+      <p style={styles.decription}>Genres: {game.genre}</p>
     </div>
   );
 }
@@ -32,8 +31,9 @@ const styles = {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'space-between',
+      cursor: 'pointer',
     },
-    image: {
+    gameImage: {
       width: '100%',
       height: 150,
       objectFit: 'cover',
@@ -45,19 +45,10 @@ const styles = {
       fontWeight: 'bold',
       marginBottom: 8,
     },
-    description: {
+    decription: {
       fontSize: 14,
       color: '#ccc',
       marginBottom: 12,
-    },
-    button: {
-      backgroundColor: '#00adee',
-      color: '#fff',
-      padding: '10px 16px',
-      border: 'none',
-      borderRadius: 6,
-      fontWeight: 'bold',
-      cursor: 'pointer',
     },
   };
   export default GameCard;
