@@ -15,7 +15,7 @@ import FilterPage from './pages/FilterPage';
 
 import GameLibrary from './components/GameLibrary';
 import GameStorePage from './pages/GameStorePage';
-
+import GameList from './components/GameList';
 import { games } from './data/games';
 
 function App() {
@@ -50,6 +50,8 @@ function App() {
 
           <Route path="/games" element={<GameLibrary />} />
           <Route path="/games/:id" element={<GameStorePage games={games} wishlist={wishlist} setWishlist={setWishlist} />} />
+          <Route path="/" element={<GameList />} />
+          <Route path="/game/:id" element={<GameStorePage wishlist={wishlist} setWishlist={setWishlist} />}/>
         </Routes>
       </div>
     </Router>

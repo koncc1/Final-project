@@ -10,7 +10,7 @@
   border: 1px solid #2a2a2a;
   border-radius: 8px;
   background-color: #111;
-  color: #d0ff6b;
+  color: #fff;
   outline: none;
   transition: border 0.3s, box-shadow 0.3s;
 }
@@ -20,7 +20,7 @@
 }
 
 .search-input:focus {
-  border-color: #d0ff6b;
+  border-color: #fa9743;
   box-shadow: 0 0 6px rgba(208, 255, 107, 0.4);
 }
 

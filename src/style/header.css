@@ -36,11 +36,45 @@
 }
 
 .logo {
+  text-decoration: none;
   font-size: 30px;
   margin: 0;
   padding-left: 20px;
   cursor: pointer;
+  color: #dede69;
+  font-weight: bold;
 }
+
+.wishlist-link {
+  color: #dede69;
+  text-decoration: none;
+  font-weight: 600;
+  margin-right: 20px;
+  transition: color 0.3s, transform 0.2s;
+  font-size: 16px;
+  position: relative;
+}
+
+.wishlist-link::after {
+  content: '';
+  display: block;
+  width: 0%;
+  height: 2px;
+  background: #a463f2;
+  transition: width 0.3s;
+  position: absolute;
+  bottom: -2px;
+}
+
+.wishlist-link:hover {
+  color: #d0ff6b;
+  transform: scale(1.05);
+}
+
+.wishlist-link:hover::after {
+  width: 100%;
+}
+
 
 .welcome {
   font-size: 16px;

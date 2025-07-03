@@ -32,7 +32,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
           <li>
             <h3>Important</h3>
             <Link to="/" onClick={toggleSidebar} style={styles.link}>Store</Link>
-            <Link to="/cart" onClick={toggleSidebar} style={styles.link}>Cart</Link>
+           
           </li>
           <li>
             <h3 onClick={() => toggleMenu('genres')} style={styles.dropdownTitle}>
